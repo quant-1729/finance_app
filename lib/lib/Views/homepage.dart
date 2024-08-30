@@ -2,6 +2,7 @@ import 'dart:ffi';
 import 'dart:ui';
 
 import 'package:finance_app/lib/Views/sendmoney.dart';
+import 'package:finance_app/lib/Views/wallet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,7 +31,7 @@ class _HomepageState extends State<Homepage> {
                   child: Column(
                     children: [
                       SizedBox(height: 20,),
-                      middlecard(),
+                      middlecard(context),
                       option(context),
                       SizedBox(height: 28,),
                       Row(
@@ -109,7 +110,7 @@ Widget topintrobar(){
   );
 }
 
-Widget middlecard() {
+Widget middlecard(BuildContext context ) {
   return Container(
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(20),
@@ -159,7 +160,9 @@ Widget middlecard() {
                     ),
                     Spacer(),
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> Wallet()));
+                      },
                       icon: Icon(Icons.arrow_right, size: 24,),
                     ),
                   ],
