@@ -1,6 +1,8 @@
 import 'package:finance_app/lib/Views/Onborading/general_onboarding_page.dart';
 import 'package:finance_app/lib/Views/Onborading/onboarding.dart';
-import 'package:finance_app/lib/Views/homepage.dart';
+import 'package:finance_app/lib/Views/activity.dart';
+import 'package:finance_app/lib/Views/homepage.dart'; // Ensure this imports a StatefulWidget for Homepage
+import 'package:finance_app/lib/Views/statisticspage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,36 +13,69 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        builder: (context, widget) {
-          ScreenUtil.init(context, designSize: Size(375, 812), minTextAdapt: true, splitScreenMode: true);
-          return widget!;
-        },
+      builder: (context, widget) {
+        ScreenUtil.init(context, designSize: Size(375, 812), minTextAdapt: true, splitScreenMode: true);
+        return widget!;
+      },
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Homepage()
+      home: HomeScreen(), // Update this to HomeScreen with BottomNavigationBar
     );
   }
 }
 
+class HomeScreen extends StatefulWidget {
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
+  int _currentIndex = 0;
+
+  final List<Widget> _pages = [
+    Homepage(), // Ensure this is the correct page
+    Activity(), // Replace with your actual page
+    Statisticspage()// Replace with your actual page
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _pages[_currentIndex],
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: _onItemTapped,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+            backgroundColor: Colors.deepPurple, // Background color for selected item
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.notifications),
+            label: 'Activity',
+            backgroundColor: Colors.deepPurple, // Background color for selected item
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.pie_chart),
+            label: 'Statistics',
+            backgroundColor: Colors.deepPurple, // Background color for selected item
+          ),
+        ],
+        selectedItemColor: Colors.deepPurple, // Highlight color for selected item
+        unselectedItemColor: Colors.grey, // Color for unselected items
+      ),
+    );
+  }
+}
