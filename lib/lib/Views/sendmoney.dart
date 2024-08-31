@@ -72,7 +72,7 @@ class _SendmoneyState extends State<Sendmoney> {
             SizedBox(height: 22,),
             Simplebutton(),
             SizedBox(height: 40,),
-            Bluebutton()
+            Bluebutton(text: "Continue",onPressed: (){},)
 
           ],
         ),
