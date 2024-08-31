@@ -2,6 +2,7 @@ import 'dart:ffi';
 import 'dart:ui';
 
 import 'package:finance_app/lib/Views/sendmoney.dart';
+import 'package:finance_app/lib/Views/transctions.dart';
 import 'package:finance_app/lib/Views/wallet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -184,7 +185,10 @@ Widget option(BuildContext context){
             Navigator.push(context, MaterialPageRoute(builder: (context)=> Sendmoney()));
           }),
           Spacer(),
-          optioncard(Icon(Icons.payment), Color(0xFFD3E1FF),"Request ", (){}),
+          optioncard(Icon(Icons.payment), Color(0xFFD3E1FF),"Request ", (){
+            Navigator.push(context, MaterialPageRoute(builder: (context)=> Transactions()));
+
+          }),
         Spacer(), 
         optioncard(Icon(Icons.settings), Color(0xFFFDC9D2), "More",(){})
       ],
