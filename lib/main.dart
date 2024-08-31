@@ -3,6 +3,7 @@ import 'package:finance_app/lib/Views/Onborading/onboarding.dart';
 import 'package:finance_app/lib/Views/activity.dart';
 import 'package:finance_app/lib/Views/homepage.dart'; // Ensure this imports a StatefulWidget for Homepage
 import 'package:finance_app/lib/Views/statisticspage.dart';
+import 'package:finance_app/lib/Views/sucessfullysendmoney.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -39,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _pages = [
     Homepage(), // Ensure this is the correct page
-    Activity(), // Replace with your actual page
+    Sucessfullysendmoney(), // Replace with your actual page
     Statisticspage()// Replace with your actual page
   ];
 
