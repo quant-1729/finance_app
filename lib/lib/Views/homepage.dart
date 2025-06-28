@@ -88,7 +88,7 @@ Widget topintrobar(){
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Hi Priyanshu", style: TextStyle(
+                  Text("Hi Jaya!!", style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.w400
                   ),),
